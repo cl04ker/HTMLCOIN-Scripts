@@ -1,4 +1,4 @@
-## HTMLCOIN-Scripts by cl04ker
+# HTMLCOIN-Scripts by cl04ker
 
 **If you find these scripts useful, please consider donating HTMLCOIN to me. Thank you.  
 My address: HXhuuAmrpNuUSoMbpKxTpZmA36uZwK4wFi**
@@ -10,7 +10,7 @@ The following scripts have been written to automate your usage of the HTMLCOIN s
 Please clone this repository adjacent to the HTMLCOIN folder you cloned from here: [HTMLCOIN Official Github Page](https://github.com/HTMLCOIN/HTMLCOIN)
 
 
-###### htmlcoin-multiminer-start.sh
+## htmlcoin-multiminer-start.sh
 Use this script to start the multicore miner. The script will start the daemon and wait until it is fully synced before asking you how many miners you want to run. The sync check is performed by using ```htmlcoin-cli getinfo``` to check the current "blocks" value ten seconds apart. When the two checks match, the script continues.
 
 Work out how many cores your CPU has and then when the script asks you *"How many miners do you want to run?"*, just enter the number of cores you have as an integer *(MAX=4)* and then press return.
@@ -43,7 +43,7 @@ Please wait while the mining threads are started...
 Please see [here](#watch-logs) for information on how to watch the logs for blocks.
 
 
-###### htmlcoin-multiminer-stop.sh
+## htmlcoin-multiminer-stop.sh
 
 Use this script to stop the multicore miner. The script will gracefully shut down all processes and may take some time. Usually no more than five minutes.
 
@@ -59,7 +59,7 @@ HTMLCOIN server stopping
 ~~~
 
 
-###### htmlcoin-watch-logs-for-blocks.sh <a name="watch-logs"></a>
+## htmlcoin-watch-logs-for-blocks.sh <a name="watch-logs"></a>
 
 Use this script to watch the log files for any blocks that you may find.
 
