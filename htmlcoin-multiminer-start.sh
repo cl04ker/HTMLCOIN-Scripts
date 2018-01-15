@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # Variables
-#RECADR="HXwSL5xszyYij8awNRJDaGDh3Th89atedg"
 RECADR=""
 MINERS=
 COUNT=0
