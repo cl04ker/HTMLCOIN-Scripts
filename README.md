@@ -65,17 +65,10 @@ Use this script to watch the log files for any blocks that you may find.
 
 Example:
 ~~~
-Every 60.0s: grep -A 1 -B 2 '"' ../HTMLCOIN-Logs/htmlcoin-miner-*
+Every 60.0s: grep -B 1 '"' ../HTMLCOIN-Logs/htmlcoin-miner-main.log
 
-../HTMLCOIN-Logs/htmlcoin-miner-0.log-Miner-3: 1138: Sat 13 Jan 09:28:23 GMT 2018
-../HTMLCOIN-Logs/htmlcoin-miner-0.log-[
-../HTMLCOIN-Logs/htmlcoin-miner-0.log:  "00000000052b72000a87509e54d905ece46f09d1221a37f67c6a0a00873f647a"
-../HTMLCOIN-Logs/htmlcoin-miner-0.log-]
---
-../HTMLCOIN-Logs/htmlcoin-miner-1.log-Miner-7: 1522: Sat 13 Jan 20:11:31 GMT 2018
-../HTMLCOIN-Logs/htmlcoin-miner-1.log-[
-../HTMLCOIN-Logs/htmlcoin-miner-1.log:  "00000000063fb43912726aa4f53b9dbc0dc1935b8a8176ccec80cda25b51ecd0"
-../HTMLCOIN-Logs/htmlcoin-miner-1.log-]
+Miner-3   Block Count:118   Tue 16 Jan 12:56:16 GMT 2018
+Block Output: [   "0000000000c8d1139136e01edb809f022408ea49dd45477b89092bca58ddc127" ]
 ~~~
 
-You may want you occasionally remove old logs with the following command: ```rm ../HTMLCOIN-Logs/*```
+You may want to occasionally remove old logs with the following command: ```rm ../HTMLCOIN-Logs/*```
