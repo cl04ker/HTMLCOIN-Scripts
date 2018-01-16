@@ -3,7 +3,7 @@
 **If you find these scripts useful, please consider donating HTMLCOIN to me. Thank you.  
 My address: HXhuuAmrpNuUSoMbpKxTpZmA36uZwK4wFi**
 
-If you need help you either use the github issues or you can find me here: [Unofficial HTMLCOIN Mining Telegram](https://t.me/joinchat/GE3Ziw0pCU5lFZvoACOJwg)
+If you need help use the github issues or you can find me here: [Unofficial HTMLCOIN Mining Telegram](https://t.me/joinchat/GE3Ziw0pCU5lFZvoACOJwg)
 
 The following scripts have been written to automate your usage of the HTMLCOIN software on Linux. These have been tested working on Ubuntu Server.
 

@@ -5,6 +5,7 @@ RECADR=""
 MINERS=
 COUNT=0
 C=1
+MAIN_LOG="../HTMLCOIN-Logs/htmlcoin-miner-main.log"
 
 # Functions
 start_daemon(){
@@ -36,14 +37,22 @@ check_blocks(){
 
 start_mining(){
   while true; do
-    echo "$2: $C: $(date)" >> $1
-    (../HTMLCOIN/src/htmlcoin-cli generatetoaddress 100 $RECADR 88888888 >> $1)
+    shopt -s lastpipe
+    ../HTMLCOIN/src/htmlcoin-cli generatetoaddress 100 $RECADR 88888888 | readarray -t BLOCK
+    { echo "$2   Block Count:$C   $(date)" & echo "Block Output: ${BLOCK[@]}"; } | tac | tee -a $1 $MAIN_LOG > /dev/null
     (( C++ ))
   done &
 }
 
 # Entrypoint...
+
+# Set up logging directory if it is not already there.
 mkdir -p ../HTMLCOIN-Logs
+
+# Remove any previous log files that may have been left from a previous mining session.
+rm ../HTMLCOIN-Logs/*
+
+touch $MAIN_LOG
 
 echo
 start_daemon
