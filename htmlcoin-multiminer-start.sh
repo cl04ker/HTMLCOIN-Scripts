@@ -18,9 +18,7 @@ check_blocks(){
     BLOCK="${BLOCK:: -1}"
     echo
     echo "First block check: $BLOCK"
-
-    sleep 10
-
+    sleep 5
     NEXT_BLOCK="$(../HTMLCOIN/src/htmlcoin-cli getinfo | grep blocks | awk '{ print $2 }')"
     NEXT_BLOCK="${NEXT_BLOCK:: -1}"
     echo
@@ -50,7 +48,7 @@ start_mining(){
 mkdir -p ../HTMLCOIN-Logs
 
 # Remove any previous log files that may have been left from a previous mining session.
-rm ../HTMLCOIN-Logs/*
+rm -f ../HTMLCOIN-Logs/*
 
 touch $MAIN_LOG
 
@@ -60,7 +58,7 @@ echo
 
 # Visual check to make sure the daemon is in sync.
 echo "We will now check that the daemon is in sync."
-sleep 5
+sleep 15
 check_blocks
 echo
 
@@ -74,7 +72,6 @@ done
 echo
 echo "Please enter your receive address:"
 read RECADR
-
 echo
 echo "Please wait while the mining threads are started..."
 
