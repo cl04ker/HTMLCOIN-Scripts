@@ -14,6 +14,8 @@ add_ppa(){
 
 # Install required dependancies
 
+add_ppa && apt update
+
 apt-get -qq install \
         build-essential \
         libtool \
@@ -22,9 +24,7 @@ apt-get -qq install \
         libssl-dev \
         libevent-dev \
         bsdmainutils \
-        git \
-        cmake \
+        git cmake \
         libboost-all-dev \
-        software-properties-common
-
-add_ppa
+        software-properties-common \
+        libdb4.8-dev libdb4.8++-dev
