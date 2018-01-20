@@ -9,6 +9,10 @@ The following scripts have been written to automate your usage of the HTMLCOIN s
 
 Please clone this repository adjacent to the HTMLCOIN folder you cloned from here: [HTMLCOIN Official Github Page](https://github.com/HTMLCOIN/HTMLCOIN)
 
+```git clone https://github.com/cl04ker/HTMLCOIN-Scripts.git```
+
+Please also don't forget to run ```git pull``` every so often to check for any updates I have made.
+
 
 ## htmlcoin-multiminer-start.sh
 Use this script to start the multicore miner. The script will start the daemon and wait until it is fully synced before asking you how many miners you want to run. The sync check is performed by using ```htmlcoin-cli getinfo``` to check the current "blocks" value ten seconds apart. When the two checks match, the script continues.
