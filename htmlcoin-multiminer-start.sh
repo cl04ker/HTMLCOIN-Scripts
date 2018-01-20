@@ -9,7 +9,7 @@ MAIN_LOG="../HTMLCOIN-Logs/htmlcoin-miner-main.log"
 
 # Functions
 start_daemon(){
-  ../HTMLCOIN/src/htmlcoind --daemon
+  ../HTMLCOIN/src/htmlcoind --daemon --rpcthreads=$MINERS
 }
 
 check_blocks(){
@@ -52,16 +52,6 @@ rm -f ../HTMLCOIN-Logs/*
 
 touch $MAIN_LOG
 
-echo
-start_daemon
-echo
-
-# Visual check to make sure the daemon is in sync.
-echo "We will now check that the daemon is in sync."
-sleep 15
-check_blocks
-echo
-
 while [ -z $MINERS ]
 do
   echo -n 'How many miners do you want to run?'
@@ -74,6 +64,15 @@ echo "Please enter your receive address:"
 read RECADR
 echo
 echo "Please wait while the mining threads are started..."
+echo
+start_daemon
+echo
+
+# Visual check to make sure the daemon is in sync.
+echo "We will now check that the daemon is in sync."
+sleep 15
+check_blocks
+echo
 
 while [ $COUNT -lt $MINERS ]
 do
