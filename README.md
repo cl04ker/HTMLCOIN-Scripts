@@ -74,5 +74,3 @@ Every 60.0s: grep -B 1 '"' ../HTMLCOIN-Logs/htmlcoin-miner-main.log
 Miner-3   Block Count:118   Tue 16 Jan 12:56:16 GMT 2018
 Block Output: [   "0000000000c8d1139136e01edb809f022408ea49dd45477b89092bca58ddc127" ]
 ~~~
-
-You may want to occasionally remove old logs with the following command: ```rm ../HTMLCOIN-Logs/*```
