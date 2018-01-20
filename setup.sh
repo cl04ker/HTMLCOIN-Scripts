@@ -40,7 +40,7 @@ apt-get -qq install \
 git clone https://github.com/HTMLCOIN/HTMLCOIN --recursive
 cd HTMLCOIN
 ./autogen.sh
-./configure
+./configure --without-gui
 make -j$(nproc)
 
 chown $(logname): ../HTMLCOIN
