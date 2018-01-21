@@ -7,14 +7,16 @@ If you need help use the github issues or you can find me here: [Unofficial HTML
 
 The following scripts have been written to automate your usage of the HTMLCOIN software on Linux. These have been tested working on Ubuntu Server.
 
-Please clone this repository adjacent to the HTMLCOIN folder you cloned from here: [HTMLCOIN Official Github Page](https://github.com/HTMLCOIN/HTMLCOIN)
-
-```git clone https://github.com/cl04ker/HTMLCOIN-Scripts.git```
+Pick one of the options below to get started:
+1. Clone this repository with ```git clone https://github.com/cl04ker/HTMLCOIN-Scripts.git``` and then use ```./start.sh``` to download and compile the software ready for use by the other scripts.
+2. If you already have the software downloaded and built then you can clone this repository adjacent to the HTMLCOIN folder you cloned from here: [HTMLCOIN Official Github Page](https://github.com/HTMLCOIN/HTMLCOIN)
 
 Please also don't forget to run ```git pull``` every so often to check for any updates I have made.
 
+## setup.sh
+Use this script to setup the HTMLCoin software ready to be used by the ```./start.sh``` script.
 
-## htmlcoin-multiminer-start.sh
+## start.sh
 Use this script to start the multicore miner. The script will start the daemon and wait until it is fully synced before asking you how many miners you want to run. The sync check is performed by using ```htmlcoin-cli getinfo``` to check the current "blocks" value ten seconds apart. When the two checks match, the script continues.
 
 Work out how many cores your CPU has and then when the script asks you *"How many miners do you want to run?"*, just enter the number of cores you have as an integer *(MAX=4)* and then press return.
@@ -44,10 +46,10 @@ HXwSL5xszyYij8awNRJDaGDh3Th89atedg
 Please wait while the mining threads are started...
 ~~~
 
-Please see [here](#watch-logs) for information on how to watch the logs for blocks.
+Please see [here](#watch) for information on how to watch the logs for blocks.
 
 
-## htmlcoin-multiminer-stop.sh
+## stop.sh
 
 Use this script to stop the multicore miner. The script will gracefully shut down all processes and may take some time. Usually no more than five minutes.
 
@@ -63,7 +65,7 @@ HTMLCOIN server stopping
 ~~~
 
 
-## htmlcoin-watch-logs-for-blocks.sh <a name="watch-logs"></a>
+## watch.sh <a name="watch"></a>
 
 Use this script to watch the log files for any blocks that you may find.
 
