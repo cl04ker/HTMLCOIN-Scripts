@@ -81,3 +81,5 @@ do
   (( COUNT++ ))
   sleep 1
 done
+
+echo -e "\e[1m\e[5m\e[92mStart up complete! Now run ./watch.sh to watch the logs for blocks.\e[0m"

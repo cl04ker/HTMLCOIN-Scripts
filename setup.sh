@@ -45,4 +45,4 @@ make -j$(nproc)
 
 chown $(logname): ../HTMLCOIN
 
-echo -e "\e[1m\e[5m\e[92mSetup Complete! Now run ./htmlcoin-multiminer-start.sh\e[0m"
+echo -e "\e[1m\e[5m\e[92mSetup complete! Now run ./htmlcoin-multiminer-start.sh\e[0m"
