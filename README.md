@@ -14,7 +14,7 @@ Pick one of the options below to get started:
 Please also don't forget to run ```git pull``` every so often to check for any updates I have made.
 
 ## setup.sh
-Use this script to setup the HTMLCoin software ready to be used by the ```./start.sh``` script.
+Use this script to setup the HTMLCoin software ready to be used by the ```./start.sh``` script. Run the setup script as root using ```sudo ./setup.sh```
 
 ## start.sh
 Use this script to start the multicore miner. The script will start the daemon and wait until it is fully synced before asking you how many miners you want to run. The sync check is performed by using ```htmlcoin-cli getinfo``` to check the current "blocks" value ten seconds apart. When the two checks match, the script continues.
