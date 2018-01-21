@@ -43,6 +43,6 @@ cd HTMLCOIN
 ./configure --without-gui
 make -j$(nproc)
 
-chown $(logname): ../HTMLCOIN
+chown -R $(logname): ../HTMLCOIN
 
 echo -e "\e[1m\e[5m\e[92mSetup complete! Now run ./htmlcoin-multiminer-start.sh\e[0m"

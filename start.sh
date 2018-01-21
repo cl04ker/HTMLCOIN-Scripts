@@ -12,19 +12,11 @@ start_daemon(){
   ../HTMLCOIN/src/htmlcoind --daemon --rpcthreads=$MINERS
 }
 
-check_blocks(){
+check_daemon(){
   while true; do
-    BLOCK="$(../HTMLCOIN/src/htmlcoin-cli getinfo | grep blocks | awk '{ print $2 }')"
-    BLOCK="${BLOCK:: -1}"
-    echo
-    echo "First block check: $BLOCK"
-    sleep 5
-    NEXT_BLOCK="$(../HTMLCOIN/src/htmlcoin-cli getinfo | grep blocks | awk '{ print $2 }')"
-    NEXT_BLOCK="${NEXT_BLOCK:: -1}"
-    echo
-    echo "Second block check: $NEXT_BLOCK"
-
-    if [ $BLOCK -ne $NEXT_BLOCK ]
+    MONEY="$(../HTMLCOIN/src/htmlcoin-cli getinfo | grep moneysupply | awk '{ print $2 }')"
+    MONEY="${MONEY:: -1}"
+    if [ $MONEY -eq "0" ]
     then
       continue
     else
@@ -67,12 +59,13 @@ echo "Please wait while the mining threads are started..."
 echo
 start_daemon
 echo
+sleep 10
 
 # Visual check to make sure the daemon is in sync.
-echo "We will now check that the daemon is in sync."
-sleep 15
-check_blocks
+echo "Checking that the daemon is in sync. Please wait!"
+check_daemon
 echo
+sleep 20
 
 while [ $COUNT -lt $MINERS ]
 do
