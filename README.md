@@ -17,26 +17,15 @@ Please also don't forget to run ```git pull``` every so often to check for any u
 Use this script to setup the HTMLCoin software ready to be used by the ```./start.sh``` script. Run the setup script as root using ```sudo ./setup.sh```
 
 ## start.sh
-Use this script to start the multicore miner. The script will start the daemon and wait until it is fully synced before asking you how many miners you want to run. The sync check is performed by using ```htmlcoin-cli getinfo``` to check the current "blocks" value ten seconds apart. When the two checks match, the script continues.
-
-Work out how many cores your CPU has and then when the script asks you *"How many miners do you want to run?"*, just enter the number of cores you have as an integer *(MAX=4)* and then press return.
+Use this script to start the multicore miner. The script will begin by asking: *How many miners do you want to run?* Match this to the number of cores your system has. If you dont know how many cores your system has, you can run ```nproc``` to find out.
 
 You will then be asked to enter your receive address. *I recommend that you copy this from your wallet and then paste it into the terminal if possible.*
 
-The selected number of miners will now start and log to ```../HTMLCOIN-LOGS/htmlcoin-miner-*```.
+The script will then start the daemon and wait until it is fully synced before continuing. The selected number of miners will now start and log to ```../HTMLCOIN-LOGS/htmlcoin-miner-*```.
 
 Example:
 ~~~
-HTMLCOIN-Scripts$ ./htmlcoin-multiminer-start.sh
-
-HTMLCOIN server starting
-
-We will now check that the daemon is in sync.
-
-First block check: 79936
-
-Second block check: 79936
-
+HTMLCOIN-Scripts$ ./start.sh
 How many miners do you want to run?
 4
 
@@ -44,6 +33,16 @@ Please enter your receive address:
 HXwSL5xszyYij8awNRJDaGDh3Th89atedg
 
 Please wait while the mining threads are started...
+
+HTMLCOIN server starting
+
+We will now check that the daemon is in sync.
+
+First block check: 89345
+
+Second block check: 89345
+
+Start up complete! Now run ./watch.sh to watch the logs for blocks.
 ~~~
 
 Please see [here](#watch) for information on how to watch the logs for blocks.
@@ -55,7 +54,7 @@ Use this script to stop the multicore miner. The script will gracefully shut dow
 
 Example:
 ~~~
-HTMLCOIN-Scripts$ ./htmlcoin-multiminer-stop.sh
+HTMLCOIN-Scripts$ ./stop.sh
 
 Killing all HTMLCOIN multiminer processes now!
 
