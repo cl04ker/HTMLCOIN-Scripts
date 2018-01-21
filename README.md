@@ -29,6 +29,14 @@ Example:
 ~~~
 HTMLCOIN-Scripts$ ./htmlcoin-multiminer-start.sh
 
+How many miners do you want to run?
+4
+
+Please enter your receive address:
+HXwSL5xszyYij8awNRJDaGDh3Th89atedg
+
+Please wait while the mining threads are started...
+
 HTMLCOIN server starting
 
 We will now check that the daemon is in sync.
@@ -37,13 +45,9 @@ First block check: 79936
 
 Second block check: 79936
 
-How many miners do you want to run?
-4
 
-Please enter your receive address:
-HXwSL5xszyYij8awNRJDaGDh3Th89atedg
+Start up complete! Now run ./watch.sh to watch the logs for blocks.
 
-Please wait while the mining threads are started...
 ~~~
 
 Please see [here](#watch) for information on how to watch the logs for blocks.
