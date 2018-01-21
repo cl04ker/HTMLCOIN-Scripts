@@ -9,12 +9,12 @@ MAIN_LOG="../HTMLCOIN-Logs/htmlcoin-miner-main.log"
 
 # Functions
 start_daemon(){
-  ../HTMLCOIN/src/htmlcoind --daemon --rpcthreads=$MINERS
+  /usr/local/bin/htmlcoind --daemon --rpcthreads=$MINERS
 }
 
 check_daemon(){
   while true; do
-    MONEY="$(../HTMLCOIN/src/htmlcoin-cli getinfo | grep moneysupply | awk '{ print $2 }')"
+    MONEY="$(/usr/local/bin/htmlcoin-cli getinfo | grep moneysupply | awk '{ print $2 }')"
     MONEY="${MONEY:: -1}"
     if [ $MONEY -eq "0" ]
     then
@@ -28,7 +28,7 @@ check_daemon(){
 start_mining(){
   while true; do
     shopt -s lastpipe
-    ../HTMLCOIN/src/htmlcoin-cli generatetoaddress 100 $RECADR 88888888 | readarray -t BLOCK
+    /usr/local/bin/htmlcoin-cli generatetoaddress 100 $RECADR 88888888 | readarray -t BLOCK
     { echo "$2   Block Count:$C   $(date)" & echo "Block Output: ${BLOCK[@]}"; } | tac | tee -a $1 $MAIN_LOG > /dev/null
     (( C++ ))
   done &
