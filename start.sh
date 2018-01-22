@@ -59,7 +59,7 @@ echo "Please wait while the mining threads are started..."
 echo
 start_daemon
 echo
-sleep 10
+sleep 20
 
 # Visual check to make sure the daemon is in sync.
 echo "Checking that the daemon is in sync. Please wait!"
