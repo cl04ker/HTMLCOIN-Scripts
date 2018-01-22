@@ -9,7 +9,7 @@ The following scripts have been written to automate your usage of the HTMLCOIN s
 
 I suggest that you clone this repository under a folder called ```HTMLCoin``` in order to keep things tidy and organised. I keep mine at ```~/crypto/HTMLCoin/HTMLCOIN-Scripts```
 
-Clone this repository with ```git clone https://github.com/cl04ker/HTMLCOIN-Scripts.git``` and then use ```./setup.sh``` to download and compile the software ready for use by the other scripts.
+Clone this repository with ```git clone https://github.com/cl04ker/HTMLCOIN-Scripts.git``` and then use ```sudo ./setup.sh``` to download and compile the software ready for use by the other scripts.
 
 Please also don't forget to run ```git pull``` every so often to check for any updates I have made.
 
