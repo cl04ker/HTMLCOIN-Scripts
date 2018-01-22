@@ -3,13 +3,13 @@
 **If you find these scripts useful, please consider donating HTMLCOIN to me. Thank you.  
 My address: HXhuuAmrpNuUSoMbpKxTpZmA36uZwK4wFi**
 
-If you need help use the github issues or you can find me here: [Unofficial HTMLCOIN Mining Telegram](https://t.me/joinchat/GE3Ziw0pCU5lFZvoACOJwg)
+If you need help use the GitHub issues or you can find me here: [Unofficial HTMLCOIN Mining Telegram](https://t.me/joinchat/GE3Ziw0pCU5lFZvoACOJwg)
 
 The following scripts have been written to automate your usage of the HTMLCOIN software on Linux. These have been tested working on Ubuntu Server.
 
-Pick one of the options below to get started:
-1. Clone this repository with ```git clone https://github.com/cl04ker/HTMLCOIN-Scripts.git``` and then use ```./start.sh``` to download and compile the software ready for use by the other scripts.
-2. If you already have the software downloaded and built then you can clone this repository adjacent to the HTMLCOIN folder you cloned from here: [HTMLCOIN Official Github Page](https://github.com/HTMLCOIN/HTMLCOIN)
+I suggest that you clone this repository under a folder called ```HTMLCoin``` in order to keep things tidy and organised. I keep mine at ```~/crypto/HTMLCoin/HTMLCOIN-Scripts```
+
+Clone this repository with ```git clone https://github.com/cl04ker/HTMLCOIN-Scripts.git``` and then use ```./setup.sh``` to download and compile the software ready for use by the other scripts.
 
 Please also don't forget to run ```git pull``` every so often to check for any updates I have made.
 
