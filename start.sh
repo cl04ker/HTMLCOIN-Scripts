@@ -13,16 +13,45 @@ start_daemon(){
 }
 
 check_daemon(){
+
   while true; do
-    MONEY="$(/usr/local/bin/htmlcoin-cli getinfo | grep moneysupply | awk '{ print $2 }')"
-    MONEY="${MONEY:: -1}"
-    if [ $MONEY -eq "0" ]
+    MONEY="$(/usr/local/bin/htmlcoin-cli getinfo > /dev/null 2>&1)"
+    RETVAL="$?"
+    if [ $RETVAL -ne "0" ]
     then
+      sleep 5
       continue
     else
       break
     fi
   done
+
+  while true; do
+    MONEY="$(/usr/local/bin/htmlcoin-cli getinfo | grep moneysupply | awk '{ print $2 }')"
+    MONEY="${MONEY:: -1}"
+    if [ $MONEY -eq "0" ]
+    then
+      sleep 5
+      continue
+    else
+      break
+    fi
+  done
+
+  echo "Connections must equal 8 to continue with mining... Please wait..."
+  while true; do
+    CONNECTIONS="$(/usr/local/bin/htmlcoin-cli getinfo | grep connections | awk '{ print $2 }')"
+    CONNECTIONS="${CONNECTIONS:: -1}"
+    echo "Connections = $CONNECTIONS"
+    if [ $CONNECTIONS -lt "8" ]
+    then
+      sleep 10
+      continue
+    else
+      break
+    fi
+  done
+
 }
 
 start_mining(){
@@ -46,6 +75,7 @@ touch $MAIN_LOG
 
 while [ -z $MINERS ]
 do
+  echo
   echo -n 'How many miners do you want to run?'
   echo
   read MINERS
@@ -55,15 +85,15 @@ echo
 echo "Please enter your receive address:"
 read RECADR
 echo
-echo "Please wait while the mining threads are started..."
-echo
 start_daemon
 echo
-sleep 20
 
 # Visual check to make sure the daemon is in sync.
 echo "Checking that the daemon is in sync. Please wait!"
+echo
 check_daemon
+echo
+echo "Please wait while the miners are started!"
 echo
 sleep 20
 
@@ -72,7 +102,8 @@ do
   touch ../HTMLCOIN-Logs/htmlcoin-miner-$COUNT.log
   start_mining ../HTMLCOIN-Logs/htmlcoin-miner-$COUNT.log Miner-$COUNT
   (( COUNT++ ))
-  sleep 1
+  sleep 2
 done
 
 echo -e "\e[1m\e[5m\e[92mStart up complete! Now run ./watch.sh to watch the logs for blocks.\e[0m"
+echo

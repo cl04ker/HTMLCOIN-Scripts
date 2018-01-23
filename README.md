@@ -26,21 +26,26 @@ The script will then start the daemon and wait until it is fully synced before c
 Example:
 ~~~
 HTMLCOIN-Scripts$ ./start.sh
+
 How many miners do you want to run?
 4
 
 Please enter your receive address:
 HXwSL5xszyYij8awNRJDaGDh3Th89atedg
 
-Please wait while the mining threads are started...
-
 HTMLCOIN server starting
 
-We will now check that the daemon is in sync.
+Checking that the daemon is in sync. Please wait!
 
-First block check: 89345
+Connections must equal 8 to continue with mining... Please wait...
+Connections = 0
+Connections = 2
+Connections = 5
+Connections = 6
+Connections = 6
+Connections = 8
 
-Second block check: 89345
+Please wait while the miners are started!
 
 Start up complete! Now run ./watch.sh to watch the logs for blocks.
 ~~~
