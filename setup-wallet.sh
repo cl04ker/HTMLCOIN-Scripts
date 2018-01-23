@@ -34,16 +34,37 @@ apt-get -qq install \
         git cmake \
         libboost-all-dev \
         software-properties-common \
-        libdb4.8-dev libdb4.8++-dev
+        libdb4.8-dev libdb4.8++-dev \
+        libqt5gui5 libqt5core5a libqt5dbus5 \
+        qttools5-dev qttools5-dev-tools \
+        libprotobuf-dev protobuf-compiler
 
 # Clone the HTMLCOIN Core repository and compile
 git clone https://github.com/HTMLCOIN/HTMLCOIN --recursive
 cd HTMLCOIN
 ./autogen.sh
-./configure --without-gui
+./configure
 make -j$(nproc)
 make install
 chown -R $(logname): ../HTMLCOIN
 
-echo -e "\e[1m\e[5m\e[92mSetup complete! Now run ./start.sh\e[0m"
+# Download icon and make desktop file for quick launching
+mkdir -p /usr/share/htmlcoin/pixmaps
+wget https://cryptominded-muc3mconxtxewee6orxv.netdna-ssl.com/coin_icons/htmlcoin.png \
+  -O /usr/share/htmlcoin/pixmaps/htmlcoin.png
+cat <<EOT >> /usr/share/applications/htmlcoin-qt.desktop
+[Desktop Entry]
+Encoding=UTF-8
+Name=HTMLCoin Wallet
+GenericName=HTMLCoin Wallet
+TryExec=htmlcoin-qt
+Exec=htmlcoin-qt %F
+Terminal=false
+Icon=/usr/share/htmlcoin/pixmaps/htmlcoin.png
+Type=Application
+Categories=Application;Cryptocurrency;HTMLCoin;
+Comment=A cross-platform GUI for the HTMLCoin Wallet.
+EOT
+
+echo -e "\e[1m\e[92mSetup of HTMLCoin wallet complete! Search your applications menu or quick launcher for 'HTMLCoin Wallet'.\e[0m"
 echo
