@@ -1,52 +1,52 @@
-#!/bin/bash
-
-# Setup script by cl04ker to prepare the system for running the mining scripts.
-
-# Functions
-add_ppa(){
-  grep -h "bitcoin" /etc/apt/sources.list.d/* > /dev/null
-  if [ $? -ne 0 ]
-  then
-    echo "Adding Bitcoin PPA."
-    yes "" | add-apt-repository ppa:bitcoin/bitcoin
-    return 0
-  else
-    echo "Bitcoin PPA already exists!"
-    return 1
-  fi
-}
-
-# Entrypoint...
-cd ..
-
-# Add bitcoin PPA
-add_ppa && apt-get update
-
-# Install dependancies
-apt-get -qq install \
-        build-essential \
-        libtool \
-        autotools-dev \
-        automake pkg-config \
-        libssl-dev \
-        libevent-dev \
-        bsdmainutils \
-        git cmake \
-        libboost-all-dev \
-        software-properties-common \
-        libdb4.8-dev libdb4.8++-dev \
-        libqt5gui5 libqt5core5a libqt5dbus5 \
-        qttools5-dev qttools5-dev-tools \
-        libprotobuf-dev protobuf-compiler
-
-# Clone the HTMLCOIN Core repository and compile
-git clone https://github.com/HTMLCOIN/HTMLCOIN --recursive
-cd HTMLCOIN
-./autogen.sh
-./configure
-make -j$(nproc)
-make install
-chown -R $(logname): ../HTMLCOIN
+# #!/bin/bash
+#
+# # Setup script by cl04ker to prepare the system for running the mining scripts.
+#
+# # Functions
+# add_ppa(){
+#   grep -h "bitcoin" /etc/apt/sources.list.d/* > /dev/null
+#   if [ $? -ne 0 ]
+#   then
+#     echo "Adding Bitcoin PPA."
+#     yes "" | add-apt-repository ppa:bitcoin/bitcoin
+#     return 0
+#   else
+#     echo "Bitcoin PPA already exists!"
+#     return 1
+#   fi
+# }
+#
+# # Entrypoint...
+# cd ..
+#
+# # Add bitcoin PPA
+# add_ppa && apt-get update
+#
+# # Install dependancies
+# apt-get -qq install \
+#         build-essential \
+#         libtool \
+#         autotools-dev \
+#         automake pkg-config \
+#         libssl-dev \
+#         libevent-dev \
+#         bsdmainutils \
+#         git cmake \
+#         libboost-all-dev \
+#         software-properties-common \
+#         libdb4.8-dev libdb4.8++-dev \
+#         libqt5gui5 libqt5core5a libqt5dbus5 \
+#         qttools5-dev qttools5-dev-tools \
+#         libprotobuf-dev protobuf-compiler
+#
+# # Clone the HTMLCOIN Core repository and compile
+# git clone https://github.com/HTMLCOIN/HTMLCOIN --recursive
+# cd HTMLCOIN
+# ./autogen.sh
+# ./configure
+# make -j$(nproc)
+# make install
+# chown -R $(logname): ../HTMLCOIN
 
 # Download icon and make desktop file for quick launching
 mkdir -p /usr/share/htmlcoin/pixmaps
