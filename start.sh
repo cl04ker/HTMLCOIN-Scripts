@@ -95,7 +95,6 @@ check_daemon
 echo
 echo "Please wait while the miners are started!"
 echo
-sleep 20
 
 while [ $COUNT -lt $MINERS ]
 do
