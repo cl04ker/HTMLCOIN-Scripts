@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Setup script by cl04ker to prepare the system for running the mining scripts.
+# Setup script by cl04ker to prepare the system for running the HTMLCoin Wallet.
 
 # Functions
 add_ppa(){
