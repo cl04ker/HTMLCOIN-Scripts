@@ -16,8 +16,12 @@ Please also don't forget to run ```git pull``` every so often to check for any u
 ## setup-miner.sh
 Use this script to setup the HTMLCoin software ready to be used by the ```./start.sh``` script. Run the setup script as root using ```sudo ./setup-miner.sh```
 
+[![asciicast](https://asciinema.org/a/L9sMKX8ZS6AWG6CnKAeCBYKNv.png)](https://asciinema.org/a/L9sMKX8ZS6AWG6CnKAeCBYKNv)
+
 ## setup-wallet.sh
 Use this script on your Linux Desktop to install the HTMLCoin Wallet software. Run the setup script as root using ```sudo ./setup-wallet.sh```. Once complete, look for 'HTMLCoin Wallet' in your applications menu or quick launcher.
+
+[![asciicast](https://asciinema.org/a/snVs8FtdrDOAIXfcPvjlDrQxO.png)](https://asciinema.org/a/snVs8FtdrDOAIXfcPvjlDrQxO)
 
 ## start.sh
 Use this script to start the multicore miner. The script will begin by asking: *How many miners do you want to run?* Match this to the number of cores your system has. If you dont know how many cores your system has, you can run ```nproc``` to find out.
