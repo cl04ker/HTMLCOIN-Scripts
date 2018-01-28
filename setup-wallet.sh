@@ -9,10 +9,8 @@ add_ppa(){
   then
     echo "Adding Bitcoin PPA."
     yes "" | add-apt-repository ppa:bitcoin/bitcoin
-    return 0
   else
     echo "Bitcoin PPA already exists!"
-    return 1
   fi
 }
 
