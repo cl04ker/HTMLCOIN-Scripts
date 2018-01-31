@@ -11,7 +11,6 @@ if [ "$CUR_VER" != "$LAT_VER" ]
     ./configure --without-gui
     make -j$(nproc)
     make install
-    chown -R $(logname): ../HTMLCOIN
     echo -e "\e[1m\e[92mUpdate complete.\e[0m"
   else
     echo -e "\e[1m\e[92mNo update required.\e[0m"
