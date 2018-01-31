@@ -6,11 +6,12 @@ LAT_VER=$(curl https://api.github.com/repos/HTMLCOIN/HTMLCOIN/releases/latest -s
 if [ "$CUR_VER" != "$LAT_VER" ]
   then
     echo -e "\e[1m\e[92mUpdate required! Updating now!\e[0m"
-    git checkout $LAT_VER
+    git pull origin master
     ./autogen.sh
     ./configure
     make -j$(nproc)
     make install
+    chown -R $(logname): ../HTMLCOIN
     echo -e "\e[1m\e[92mUpdate complete.\e[0m"
   else
     echo -e "\e[1m\e[92mNo update required.\e[0m"
