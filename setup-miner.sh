@@ -21,7 +21,7 @@ cd ..
 add_ppa && apt-get update
 
 # Install dependancies
-apt-get -qq install jq \
+apt-get -qq install jq curl \
         build-essential \
         libtool \
         autotools-dev \
