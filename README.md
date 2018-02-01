@@ -75,6 +75,11 @@ Stopping HTMLCOIN daemon now! Please wait! Could take some time!
 HTMLCOIN server stopping
 ~~~
 
+## update-miner.sh
+Run this script as root to update your mining software only (for dedicated servers): ```sudo ./update-miner.sh```
+
+## update-wallet.sh
+Run this script as root to update your wallet and mining software (mainly for desktop use): ```sudo ./update-wallet.sh```
 
 ## watch.sh <a name="watch"></a>
 
