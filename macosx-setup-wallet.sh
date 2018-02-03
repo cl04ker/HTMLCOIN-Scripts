@@ -40,7 +40,7 @@ cd ..
 chown -R $(logname): HTMLCOIN
 
 # Create application bundle for quick launching the wallet
-cd ..; mkdir temp; cd temp; git clone https://github.com/Xeoncross/macappshell.git; cd macappshell
+mkdir temp; cd temp; git clone https://github.com/Xeoncross/macappshell.git; cd macappshell
 # Grab the icon
 curl https://upload.wikimedia.org/wikipedia/commons/c/ce/HTMLcoin.png > HTMLCoin.png
 # Setup the bundle
