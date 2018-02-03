@@ -13,13 +13,17 @@ Clone this repository with ```git clone https://github.com/cl04ker/HTMLCOIN-Scri
 
 Please also don't forget to run ```git pull``` every so often to check for any updates I have made.
 
+## macosx-setup-wallet-and-miner.sh
+
+Setup wallet and mining software on MacOSX. Run ```sudo ./macosx-setup-wallet-and-miner.sh``` to start the installation.
+
 ## setup-miner.sh
 Use this script to setup the HTMLCoin software ready to be used by the ```./start.sh``` script. Run the setup script as root using ```sudo ./setup-miner.sh```
 
 [![asciicast](https://asciinema.org/a/L9sMKX8ZS6AWG6CnKAeCBYKNv.png)](https://asciinema.org/a/L9sMKX8ZS6AWG6CnKAeCBYKNv)
 
-## setup-wallet.sh
-Use this script on your Linux Desktop to install the HTMLCoin Wallet software. Run the setup script as root using ```sudo ./setup-wallet.sh```. Once complete, look for 'HTMLCoin Wallet' in your applications menu or quick launcher.
+## setup-wallet-and-miner.sh
+Use this script on your Linux Desktop to install the HTMLCoin Wallet software. Run the setup script as root using ```sudo ./setup-wallet-and-miner.sh```. Once complete, look for 'HTMLCoin Wallet' in your applications menu or quick launcher.
 
 [![asciicast](https://asciinema.org/a/snVs8FtdrDOAIXfcPvjlDrQxO.png)](https://asciinema.org/a/snVs8FtdrDOAIXfcPvjlDrQxO)
 
@@ -78,8 +82,8 @@ HTMLCOIN server stopping
 ## update-miner.sh
 Run this script as root to update your mining software only (for dedicated servers): ```sudo ./update-miner.sh```
 
-## update-wallet.sh
-Run this script as root to update your wallet and mining software (mainly for desktop use): ```sudo ./update-wallet.sh```
+## update-wallet-and-miner.sh
+Run this script as root to update your wallet and mining software (mainly for desktop use): ```sudo ./update-wallet-and-miner.sh```
 
 ## watch.sh <a name="watch"></a>
 
