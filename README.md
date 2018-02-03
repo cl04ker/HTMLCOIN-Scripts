@@ -13,9 +13,9 @@ Clone this repository with ```git clone https://github.com/cl04ker/HTMLCOIN-Scri
 
 Please also don't forget to run ```git pull``` every so often to check for any updates I have made.
 
-## macosx-setup-wallet-and-miner.sh
+## macosx-setup-wallet.sh
 
-Setup wallet and mining software on MacOSX. Run ```sudo ./macosx-setup-wallet-and-miner.sh``` to start the installation.
+Setup wallet software on MacOSX. Run ```sudo ./macosx-setup-wallet.sh``` to start the installation.
 
 ## setup-miner.sh
 Use this script to setup the HTMLCoin software ready to be used by the ```./start.sh``` script. Run the setup script as root using ```sudo ./setup-miner.sh```
