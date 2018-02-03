@@ -49,7 +49,7 @@ check_daemon(){
   while true; do
     CONNECTIONS="$(/usr/local/bin/htmlcoin-cli getinfo | grep connections | awk '{ print $2 }' | rev | cut -c 2- | rev)"
     echo "Connections = $CONNECTIONS"
-    if [ $CONNECTIONS -lt "8" ]
+    if [ $CONNECTIONS -lt "5" ]
     then
       sleep 10
       continue
