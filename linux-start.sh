@@ -21,7 +21,7 @@ check_daemon(){
     echo "GetInfo Return Value = $RETVAL"
     if [ $RETVAL -ne "0" ]
     then
-      sleep 10
+      sleep 5
       continue
     else
       break
@@ -34,9 +34,9 @@ check_daemon(){
   while true; do
     MONEY="$(/usr/local/bin/htmlcoin-cli getinfo | grep moneysupply | awk '{ print $2 }' | rev | cut -c 2- | rev)"
     echo "Money = $MONEY"
-    if [ $MONEY -lt "90000000000" ]
+    if [ $MONEY -eq "0" ]
     then
-      sleep 10
+      sleep 5
       continue
     else
       break
@@ -49,7 +49,7 @@ check_daemon(){
   while true; do
     CONNECTIONS="$(/usr/local/bin/htmlcoin-cli getinfo | grep connections | awk '{ print $2 }' | rev | cut -c 2- | rev)"
     echo "Connections = $CONNECTIONS"
-    if [ $CONNECTIONS -lt "5" ]
+    if [ $CONNECTIONS -lt "8" ]
     then
       sleep 10
       continue
@@ -62,8 +62,9 @@ check_daemon(){
 
 start_mining(){
   while true; do
-    declare -a BLOCK=$(/usr/local/bin/htmlcoin-cli generatetoaddress 100 $RECADR 88888888)
-    { echo "$2   Block Count:$C   $(date)" & echo "Block Output: $BLOCK"; } | tee -a $1 $MAIN_LOG > /dev/null
+    shopt -s lastpipe
+    /usr/local/bin/htmlcoin-cli generatetoaddress 100 $RECADR 88888888 | readarray -t BLOCK
+    { echo "$2   Block Count:$C   $(date)" & echo "Block Output: ${BLOCK[@]}"; } | tac | tee -a $1 $MAIN_LOG > /dev/null
     (( C++ ))
   done &
 }
@@ -107,5 +108,5 @@ do
   sleep 2
 done
 
-echo "Start up complete! Now run ./watch.sh to watch the logs for blocks."
+echo -e "\e[1m\e[92mStart up complete! Now run ./watch.sh to watch the logs for blocks.\e[0m"
 echo
