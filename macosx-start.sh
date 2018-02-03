@@ -33,7 +33,9 @@ check_daemon(){
   echo
   while true; do
     MONEY="$(/usr/local/bin/htmlcoin-cli getinfo | grep moneysupply | awk '{ print $2 }' | rev | cut -c 2- | rev)"
+    BLOCKS="$(/usr/local/bin/htmlcoin-cli getinfo | grep blocks | awk '{ print $2 }' | rev | cut -c 2- | rev)"
     echo "Money = $MONEY"
+    echo "Blocks = $BLOCKS"
     if [ $MONEY -lt "90000000000" ]
     then
       sleep 10
