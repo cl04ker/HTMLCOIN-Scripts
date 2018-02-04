@@ -17,6 +17,9 @@ fi
 su -m $SUDO_USER -c "brew install cmake automake berkeley-db4 libtool miniupnpc openssl pkg-config protobuf qt5 libevent"
 su -m $SUDO_USER -c "brew install boost --without-single --without-static"
 su -m $SUDO_USER -c "brew install imagemagick --with-librsvg"
+su -m $SUDO_USER -c "brew install lolcat watch coreutils"
+
+ln -s /usr/local/bin/gtac /usr/local/bin/tac
 
 # Clone HTMLCOIN repo and compile...
 cd ..
@@ -49,5 +52,11 @@ curl https://upload.wikimedia.org/wikipedia/commons/c/ce/HTMLcoin.png > HTMLCoin
 cp ../../HTMLCOIN/src/qt/htmlcoin-qt HTMLCoin\ Wallet.app/Contents/MacOS/HTMLCoin\ Wallet
 # Copy bundle over to Applications directory and clean up
 cp -R HTMLCoin\ Wallet.app /Applications/; rm -rf ../../temp
+
+# Tidy up left over headers and files that upset brew doctor
+rm /usr/local/include/bitcoinconsensus.h
+rm /usr/local/lib/libbitcoinconsensus.la
+rm /usr/local/lib/pkgconfig/libbitcoinconsensus.pc
+rm /usr/local/lib/libbitcoinconsensus.a
 
 echo "Install complete! Launch the HTMLCoin Wallet from the Applications menu or Quick Launcher."

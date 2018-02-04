@@ -13,10 +13,12 @@ start_daemon(){
 }
 
 check_daemon(){
-
+  echo "Checking that the daemon is up."
+  echo
   while true; do
-    MONEY="$(/usr/local/bin/htmlcoin-cli getinfo > /dev/null 2>&1)"
+    /usr/local/bin/htmlcoin-cli getinfo > /dev/null 2>&1
     RETVAL="$?"
+    echo "GetInfo Return Value = $RETVAL"
     if [ $RETVAL -ne "0" ]
     then
       sleep 5
@@ -26,9 +28,14 @@ check_daemon(){
     fi
   done
 
+  echo
+  echo "Checking that the daemon is in sync. Money must be higher than 0."
+  echo
   while true; do
-    MONEY="$(/usr/local/bin/htmlcoin-cli getinfo | grep moneysupply | awk '{ print $2 }')"
-    MONEY="${MONEY:: -1}"
+    MONEY="$(/usr/local/bin/htmlcoin-cli getinfo | grep moneysupply | awk '{ print $2 }' | rev | cut -c 2- | rev)"
+    BLOCKS="$(/usr/local/bin/htmlcoin-cli getinfo | grep blocks | awk '{ print $2 }' | rev | cut -c 2- | rev)"
+    echo "Money = $MONEY"
+    echo "Blocks = $BLOCKS"
     if [ $MONEY -eq "0" ]
     then
       sleep 5
@@ -38,12 +45,13 @@ check_daemon(){
     fi
   done
 
-  echo "Connections must equal 8 to continue with mining... Please wait..."
+  echo
+  echo "Connections must be greater than 4 to continue with mining... Please wait..."
+  echo
   while true; do
-    CONNECTIONS="$(/usr/local/bin/htmlcoin-cli getinfo | grep connections | awk '{ print $2 }')"
-    CONNECTIONS="${CONNECTIONS:: -1}"
+    CONNECTIONS="$(/usr/local/bin/htmlcoin-cli getinfo | grep connections | awk '{ print $2 }' | rev | cut -c 2- | rev)"
     echo "Connections = $CONNECTIONS"
-    if [ $CONNECTIONS -lt "8" ]
+    if [ $CONNECTIONS -lt "5" ]
     then
       sleep 10
       continue
@@ -88,14 +96,12 @@ echo
 start_daemon
 echo
 
-# Visual check to make sure the daemon is in sync.
-echo "Checking that the daemon is in sync. Please wait!"
-echo
+# Check to make sure the daemon is in sync.
 check_daemon
+
 echo
 echo "Please wait while the miners are started!"
 echo
-
 while [ $COUNT -lt $MINERS ]
 do
   touch ../HTMLCOIN-Logs/htmlcoin-miner-$COUNT.log

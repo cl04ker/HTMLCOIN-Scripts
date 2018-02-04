@@ -13,21 +13,13 @@ Clone this repository with ```git clone https://github.com/cl04ker/HTMLCOIN-Scri
 
 Please also don't forget to run ```git pull``` every so often to check for any updates I have made.
 
-## macosx-setup-wallet.sh
+## linux-setup-miner.sh
+Use this script to setup the HTMLCoin software ready to be used by the ```./linux-start.sh``` script. Run the setup script as root using ```sudo ./linux-setup-miner.sh```
 
-Setup wallet software on MacOSX. Run ```sudo ./macosx-setup-wallet.sh``` to start the installation.
+## linux-setup-wallet-and-miner.sh
+Use this script on your Linux Desktop to install the HTMLCoin Wallet software. Run the setup script as root using ```sudo ./linux-setup-wallet-and-miner.sh```. Once complete, look for 'HTMLCoin Wallet' in your applications menu or quick launcher.
 
-## setup-miner.sh
-Use this script to setup the HTMLCoin software ready to be used by the ```./start.sh``` script. Run the setup script as root using ```sudo ./setup-miner.sh```
-
-[![asciicast](https://asciinema.org/a/L9sMKX8ZS6AWG6CnKAeCBYKNv.png)](https://asciinema.org/a/L9sMKX8ZS6AWG6CnKAeCBYKNv)
-
-## setup-wallet-and-miner.sh
-Use this script on your Linux Desktop to install the HTMLCoin Wallet software. Run the setup script as root using ```sudo ./setup-wallet-and-miner.sh```. Once complete, look for 'HTMLCoin Wallet' in your applications menu or quick launcher.
-
-[![asciicast](https://asciinema.org/a/snVs8FtdrDOAIXfcPvjlDrQxO.png)](https://asciinema.org/a/snVs8FtdrDOAIXfcPvjlDrQxO)
-
-## start.sh
+## linux-start.sh
 Use this script to start the multicore miner. The script will begin by asking: *How many miners do you want to run?* Match this to the number of cores your system has. If you dont know how many cores your system has, you can run ```nproc``` to find out.
 
 You will then be asked to enter your receive address. *I recommend that you copy this from your wallet and then paste it into the terminal if possible.*
@@ -36,37 +28,60 @@ The script will then start the daemon and wait until it is fully synced before c
 
 Example:
 ~~~
-HTMLCOIN-Scripts$ ./start.sh
+$ ./linux-start.sh
 
 How many miners do you want to run?
-4
+2
 
 Please enter your receive address:
 HXwSL5xszyYij8awNRJDaGDh3Th89atedg
 
 HTMLCOIN server starting
 
-Checking that the daemon is in sync. Please wait!
+Checking that the daemon is up.
 
-Connections must equal 8 to continue with mining... Please wait...
-Connections = 0
-Connections = 2
+GetInfo Return Value = 1
+GetInfo Return Value = 0
+
+Checking that the daemon is in sync. Money must be higher than 0.
+
+Money = 0
+Money = 0
+Money = 0
+Money = 0
+Money = 0
+Money = 93901014004
+
+Connections must be greater than 4 to continue with mining... Please wait...
+
+Connections = 3
+Connections = 3
+Connections = 3
+Connections = 4
 Connections = 5
-Connections = 6
-Connections = 6
-Connections = 8
 
 Please wait while the miners are started!
-
-Start up complete! Now run ./watch.sh to watch the logs for blocks.
 ~~~
 
 Please see [here](#watch) for information on how to watch the logs for blocks.
 
+## linux-update-miner.sh
+Run this script as root to update your mining software only (for dedicated servers): ```sudo ./linux-update-miner.sh```
+
+## linux-update-wallet-and-miner.sh
+Run this script as root to update your wallet and mining software (mainly for desktop use): ```sudo ./linux-update-wallet-and-miner.sh```
+
+## macosx-setup-wallet-and-miner.sh
+
+Setup wallet software on MacOSX. Run ```sudo ./macosx-setup-wallet-and-miner.sh``` to start the installation.
+
+## macosx-start.sh
+
+Start mining on MacOSX with this script. Run ```./macosx-start.sh``` to configure and start the miners. See linux start script for an example.
 
 ## stop.sh
 
-Use this script to stop the multicore miner. The script will gracefully shut down all processes and may take some time. Usually no more than five minutes.
+Use this script to stop the miners. The script will shut down all processes and may take some time. Usually no more than five minutes.
 
 Example:
 ~~~
@@ -78,12 +93,6 @@ Stopping HTMLCOIN daemon now! Please wait! Could take some time!
 
 HTMLCOIN server stopping
 ~~~
-
-## update-miner.sh
-Run this script as root to update your mining software only (for dedicated servers): ```sudo ./update-miner.sh```
-
-## update-wallet-and-miner.sh
-Run this script as root to update your wallet and mining software (mainly for desktop use): ```sudo ./update-wallet-and-miner.sh```
 
 ## watch.sh <a name="watch"></a>
 
