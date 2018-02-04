@@ -109,5 +109,3 @@ Block Output: [   "0000000000c8d1139136e01edb809f022408ea49dd45477b89092bca58ddc
 ## watch-lolcat.sh
 
 An attractive way to monitor the progress of your miners! Try it out!
-
-You must install lolcat first by running ```sudo apt install lolcat```
