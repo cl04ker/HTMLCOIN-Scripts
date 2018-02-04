@@ -64,9 +64,15 @@ check_daemon(){
 
 start_mining(){
   while true; do
-    declare -a BLOCK=$(/usr/local/bin/htmlcoin-cli generatetoaddress 100 $RECADR 88888888)
-    BLOCK=$(printf '%s\n' "${BLOCK[*]}")
-    { echo "$2   Block Count:$C   $(date)" & echo "Block Output: $BLOCK" | tac; } | tee -a $1 $MAIN_LOG > /dev/null
+    
+    GEN=$(/usr/local/bin/htmlcoin-cli generatetoaddress 100 $RECADR 88888888)
+
+    declare -a BLOCK
+    while read i; do
+      BLOCK=( "${BLOCK[@]}" "$i" )
+      { echo "$2   Block Count:$C   $(date)" & echo "Block Output: $BLOCK"; } | tac | tee -a $1 $MAIN_LOG > /dev/null
+    done < <(echo ${GEN[@]})
+    
     (( C++ ))
   done &
 }
