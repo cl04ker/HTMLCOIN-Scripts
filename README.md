@@ -7,7 +7,7 @@ If you need help use the GitHub issues or you can find me here: [Unofficial HTML
 
 The following scripts have been written to automate your usage of the HTMLCOIN software on Ubuntu Linux.
 
-I suggest that you clone this repository under a folder called ```HTMLCoin``` in order to keep things tidy and organised. I keep mine at ```~/crypto/HTMLCoin/HTMLCOIN-Scripts```
+I suggest that you clone this repository under a folder called "HTMLCoin" in order to keep things tidy and organised. I keep mine at ```~/Crypto/HTMLCoin/HTMLCOIN-Scripts```
 
 Clone this repository with ```git clone https://github.com/cl04ker/HTMLCOIN-Scripts.git``` and then use one of the setup scripts depending on what you would like to achieve.
 
