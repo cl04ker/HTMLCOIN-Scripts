@@ -17,7 +17,9 @@ fi
 su -m $SUDO_USER -c "brew install cmake automake berkeley-db4 libtool miniupnpc openssl pkg-config protobuf qt5 libevent"
 su -m $SUDO_USER -c "brew install boost --without-single --without-static"
 su -m $SUDO_USER -c "brew install imagemagick --with-librsvg"
-su -m $SUDO_USER -c "brew install lolcat watch"
+su -m $SUDO_USER -c "brew install lolcat watch coreutils"
+
+ln -s /usr/local/bin/gtac /usr/local/bin/tac
 
 # Clone HTMLCOIN repo and compile...
 cd ..
