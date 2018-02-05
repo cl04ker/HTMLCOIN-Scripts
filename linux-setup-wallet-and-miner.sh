@@ -64,5 +64,6 @@ Categories=Application;Cryptocurrency;HTMLCoin;
 Comment=HTMLCoin Wallet
 EOT
 
+echo
 echo -e "\e[1m\e[92mSetup of HTMLCoin wallet complete! Search your applications menu or quick launcher for 'HTMLCoin Wallet'.\e[0m"
 echo
