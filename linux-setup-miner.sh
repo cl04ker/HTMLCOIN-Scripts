@@ -43,5 +43,6 @@ make -j$(nproc)
 make install
 chown -R $(logname): ../HTMLCOIN
 
-echo -e "\e[1m\e[92mSetup complete! Now run ./start.sh\e[0m"
+echo
+echo -e "\e[1m\e[92mSetup complete! Now run ./linux-start.sh\e[0m"
 echo
