@@ -1,8 +1,8 @@
 #!/bin/bash
 echo
 echo "Killing all HTMLCOIN multiminer processes now!"
-pkill start.sh
-pkill htmlcoin-cli
+pkill -f start.sh
+pkill -f htmlcoin-cli
 echo
 echo "Stopping HTMLCOIN daemon now! Please wait! Could take some time!"
 echo
