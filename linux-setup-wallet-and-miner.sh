@@ -61,7 +61,7 @@ Terminal=false
 Icon=/usr/share/htmlcoin/pixmaps/htmlcoin.png
 Type=Application
 Categories=Application;Cryptocurrency;HTMLCoin;
-Comment=A cross-platform GUI for the HTMLCoin Wallet.
+Comment=HTMLCoin Wallet
 EOT
 
 echo -e "\e[1m\e[92mSetup of HTMLCoin wallet complete! Search your applications menu or quick launcher for 'HTMLCoin Wallet'.\e[0m"
