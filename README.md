@@ -5,7 +5,7 @@ My address: HXhuuAmrpNuUSoMbpKxTpZmA36uZwK4wFi**
 
 If you need help use the GitHub issues or you can find me here: [Unofficial HTMLCOIN Mining Telegram](https://t.me/joinchat/GE3Ziw0pCU5lFZvoACOJwg)
 
-The following scripts have been written to automate your usage of the HTMLCOIN software on Ubuntu Linux.
+The following scripts have been written to automate your usage of the HTMLCOIN software on Ubuntu Linux and MacOSX.
 
 I suggest that you clone this repository under a folder called "HTMLCoin" in order to keep things tidy and organised. I keep mine at ```~/Crypto/HTMLCoin/HTMLCOIN-Scripts```
 
