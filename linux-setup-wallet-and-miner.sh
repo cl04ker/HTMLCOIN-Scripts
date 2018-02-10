@@ -38,12 +38,23 @@ apt-get -qq install jq curl lolcat \
         libprotobuf-dev protobuf-compiler
 
 # Clone the HTMLCOIN Core repository and compile
-git clone https://github.com/HTMLCOIN/HTMLCOIN --recursive
+LAT_VER=$(curl https://api.github.com/repos/HTMLCOIN/HTMLCOIN/releases/latest -s | jq .name -r)
+git clone -b $LAT_VER https://github.com/HTMLCOIN/HTMLCOIN --recursive
 cd HTMLCOIN
 ./autogen.sh
 ./configure
 make -j$(nproc)
 make install
+make check
+
+if [ $? != 0 ]; then
+  echo "Tests Failed! Please seek support!"
+  exit
+else
+  echo "Tests completed sucessfully! Installing now!"
+  make install
+fi
+
 chown -R $(logname): ../HTMLCOIN
 
 # Download icon and make desktop file for quick launching
