@@ -44,7 +44,7 @@ cd HTMLCOIN
 ./autogen.sh
 ./configure
 make -j$(nproc)
-make install
+echo "Build complete!"
 make check
 
 if [ $? != 0 ]; then

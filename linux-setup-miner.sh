@@ -41,7 +41,7 @@ cd HTMLCOIN
 ./autogen.sh
 ./configure --without-gui
 make -j$(nproc)
-make install
+echo "Build complete!"
 make check
 
 if [ $? != 0 ]; then
@@ -51,6 +51,7 @@ else
   echo "Tests completed sucessfully! Installing now!"
   make install
 fi
+
 chown -R $(logname): ../HTMLCOIN
 
 echo
