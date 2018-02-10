@@ -23,7 +23,8 @@ ln -s /usr/local/bin/gtac /usr/local/bin/tac
 
 # Clone HTMLCOIN repo and compile...
 cd ..
-git clone --recursive https://github.com/HTMLCOIN/HTMLCOIN
+LAT_VER=$(curl https://api.github.com/repos/HTMLCOIN/HTMLCOIN/releases/latest -s | jq .name -r)
+git clone -b $LAT_VER https://github.com/HTMLCOIN/HTMLCOIN --recursive
 cd HTMLCOIN
 ./autogen.sh
 ./configure --enable-static --disable-shared
@@ -33,6 +34,7 @@ make check
 
 if [ $? != 0 ]; then
   echo "Tests Failed! Please seek support!"
+  exit
 else
   echo "Tests completed sucessfully! Installing now!"
   make install

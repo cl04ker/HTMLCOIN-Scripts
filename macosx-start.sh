@@ -64,7 +64,7 @@ check_daemon(){
 
 start_mining(){
   while true; do
-    
+
     GEN=$(/usr/local/bin/htmlcoin-cli generatetoaddress 100 $RECADR 88888888)
 
     declare -a BLOCK
@@ -72,7 +72,7 @@ start_mining(){
       BLOCK=( "${BLOCK[@]}" "$i" )
       { echo "$2   Block Count:$C   $(date)" & echo "Block Output: $BLOCK"; } | tac | tee -a $1 $MAIN_LOG > /dev/null
     done < <(echo ${GEN[@]})
-    
+
     (( C++ ))
   done &
 }
@@ -116,5 +116,5 @@ do
   sleep 2
 done
 
-echo "Start up complete! Now run ./watch.sh to watch the logs for blocks."
+echo "Start up complete! Now run ./show-blocks.sh to check the logs for blocks."
 echo

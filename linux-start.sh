@@ -110,5 +110,5 @@ do
   sleep 2
 done
 
-echo -e "\e[1m\e[92mStart up complete! Now run ./watch.sh to watch the logs for blocks.\e[0m"
+echo -e "\e[1m\e[92mStart up complete! Now run ./show-blocks.sh to check the logs for blocks.\e[0m"
 echo

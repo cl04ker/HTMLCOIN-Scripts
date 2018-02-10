@@ -148,3 +148,7 @@ HTMLCOIN server stopping
 ## watch-lolcat.sh
 
 An attractive way to monitor the progress of your miners! Try it out!
+
+## watch.sh
+
+Use this script to monitor the main mining log in order to keep eyes on the mining progress and to ensure that the miners are still running correctly.
