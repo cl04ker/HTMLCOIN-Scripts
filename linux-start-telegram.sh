@@ -93,7 +93,7 @@ do
 done
 
 echo
-echo "Please enter a new for this system:"
+echo "Please enter a name for this system:"
 read SYSTEM
 
 echo
