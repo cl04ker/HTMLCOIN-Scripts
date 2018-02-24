@@ -4,7 +4,7 @@
 
 # Functions
 add_ppa(){
-  grep -h "bitcoin" /etc/apt/sources.list.d/* 2&>1 > /dev/null
+  grep -h "bitcoin" /etc/apt/sources.list.d/* > /dev/null 2>&1
   if [ $? -ne 0 ]
   then
     echo "Adding Bitcoin PPA."
