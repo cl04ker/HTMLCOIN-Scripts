@@ -19,6 +19,11 @@ Use this script to setup the HTMLCoin software ready to be used by the ```./linu
 ## linux-setup-wallet-and-miner.sh
 Use this script on your Linux Desktop to install the HTMLCoin Wallet software. Run the setup script as root using ```sudo ./linux-setup-wallet-and-miner.sh```. Once complete, look for 'HTMLCoin Wallet' in your applications menu or quick launcher.
 
+## linux-start-telegram.sh
+Use this script to be notified in Telegram by your own bot every time you find a block. To set up:
+* Use botfather to get your token: [http://telegram.me/BotFather](http://telegram.me/BotFather)
+* Use get_id bot to get your chat id: [http://telegram.me/get_id_bot](http://telegram.me/get_id_bot)
+
 ## linux-start.sh
 Use this script to start the multicore miner. The script will begin by asking: *How many miners do you want to run?* Match this to the number of cores your system has. If you dont know how many cores your system has, you can run ```nproc``` to find out.
 
