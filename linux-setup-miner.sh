@@ -15,35 +15,43 @@ add_ppa(){
 }
 
 # Entrypoint...
+USER=$(who | awk 'NR==1{print $1}')
+
 cd ..
 
 # Add bitcoin PPA
 add_ppa && apt-get update
 
-# Install dependancies
-apt-get -qq install jq curl lolcat \
-        build-essential \
-        libtool \
-        autotools-dev \
-        automake pkg-config \
-        libssl-dev \
-        libevent-dev \
-        bsdmainutils \
-        git cmake \
-        libboost-all-dev \
-        software-properties-common \
-        libdb4.8-dev libdb4.8++-dev
+# Install dependencies
+apt-get -qq install \
+  automake \
+  autotools-dev \
+  bsdmainutils \
+  build-essential \
+  cmake \
+  git \
+  libevent-dev \
+  libssl-dev \
+  libtool \
+  lolcat \
+  pkg-config \
+  software-properties-common
 
-# Clone the HTMLCOIN Core repository and compile
-LAT_VER=$(curl https://api.github.com/repos/HTMLCOIN/HTMLCOIN/releases/latest -s | jq .name -r)
-git clone -b $LAT_VER https://github.com/HTMLCOIN/HTMLCOIN --recursive
+# Install BerkeleyDB 4.8
+apt-get -qq install \
+  libdb4.8-dev libdb4.8++-dev
+
+# Clone the HTMLCOIN Core repository, swtich to latest release and compile
+git clone --recursive https://github.com/HTMLCOIN/HTMLCOIN
 cd HTMLCOIN
+git checkout `git tag | sort -V | tail -1`
 ./autogen.sh
 ./configure --without-gui
 make -j$(nproc)
 echo "Build complete!"
-make check
 
+# Perform tests
+make check
 if [ $? != 0 ]; then
   echo "Tests Failed! Please seek support!"
   exit
@@ -52,7 +60,7 @@ else
   make install
 fi
 
-chown -R $(logname): ../HTMLCOIN
+chown -R $USER:$USER ../HTMLCOIN
 
 echo
 echo -e "\e[1m\e[92mSetup complete! Now run ./linux-start.sh\e[0m"
