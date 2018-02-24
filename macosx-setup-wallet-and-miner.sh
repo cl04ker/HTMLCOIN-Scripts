@@ -1,5 +1,7 @@
 #!/bin/bash
 
+USER=$(who | awk 'NR==1{print $1}')
+
 # Entrypoint...
 
 test -f /usr/local/bin/brew
@@ -23,15 +25,16 @@ ln -s /usr/local/bin/gtac /usr/local/bin/tac
 
 # Clone HTMLCOIN repo and compile...
 cd ..
-LAT_VER=$(curl https://api.github.com/repos/HTMLCOIN/HTMLCOIN/releases/latest -s | jq .name -r)
-git clone -b $LAT_VER https://github.com/HTMLCOIN/HTMLCOIN --recursive
+git clone --recursive https://github.com/HTMLCOIN/HTMLCOIN
 cd HTMLCOIN
+git checkout `git tag | sort -V | tail -1`
 ./autogen.sh
 ./configure --enable-static --disable-shared
 make -j$(sysctl -n hw.ncpu)
 echo "Build complete!"
-make check
 
+# Perform tests
+make check
 if [ $? != 0 ]; then
   echo "Tests Failed! Please seek support!"
   exit
@@ -42,7 +45,7 @@ fi
 
 cd ..
 
-chown -R $(logname): HTMLCOIN
+chown -R $USER:$USER HTMLCOIN
 
 # Create application bundle for quick launching the wallet
 mkdir temp; cd temp; git clone https://github.com/Xeoncross/macappshell.git; cd macappshell

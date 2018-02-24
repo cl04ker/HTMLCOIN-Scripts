@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Setup script by cl04ker to prepare the system for running the HTMLCoin Wallet.
+# Setup script by cl04ker to prepare the system for running the HTMLCoin Wallet
 
 # Functions
 add_ppa(){
@@ -15,38 +15,59 @@ add_ppa(){
 }
 
 # Entrypoint...
+USER=$(who | awk 'NR==1{print $1}')
+
 cd ..
 
 # Add bitcoin PPA
 add_ppa && apt-get update
 
-# Install dependancies
-apt-get -qq install jq curl lolcat \
-        build-essential \
-        libtool \
-        autotools-dev \
-        automake pkg-config \
-        libssl-dev \
-        libevent-dev \
-        bsdmainutils \
-        git cmake \
-        libboost-all-dev \
-        software-properties-common \
-        libdb4.8-dev libdb4.8++-dev \
-        libqt5gui5 libqt5core5a libqt5dbus5 \
-        qttools5-dev qttools5-dev-tools \
-        libprotobuf-dev protobuf-compiler
+# Install dependencies
+apt-get -qq install \
+  automake \
+  autotools-dev \
+  bsdmainutils \
+  build-essential \
+  cmake \
+  git \
+  libevent-dev \
+  libssl-dev \
+  libtool \
+  lolcat \
+  pkg-config \
+  software-properties-common
 
-# Clone the HTMLCOIN Core repository and compile
-LAT_VER=$(curl https://api.github.com/repos/HTMLCOIN/HTMLCOIN/releases/latest -s | jq .name -r)
-git clone -b $LAT_VER https://github.com/HTMLCOIN/HTMLCOIN --recursive
+# Install BerkeleyDB 4.8
+apt-get -qq install \
+  libdb4.8-dev libdb4.8++-dev
+
+# Install dependencies for UPNP, QR and ZMQ
+apt-get -qq install \
+  libminiupnpc-dev \
+  libqrencode-dev \
+  libzmq3-dev
+
+# Install dependencies for Qt5
+apt-get -qq install \
+  libqt5gui5 \
+  libqt5core5a \
+  libqt5dbus5 \
+  qttools5-dev \
+  qttools5-dev-tools \
+  libprotobuf-dev \
+  protobuf-compiler
+
+# Clone the HTMLCOIN Core repository, swtich to latest release and compile
+git clone --recursive https://github.com/HTMLCOIN/HTMLCOIN
 cd HTMLCOIN
+git checkout `git tag | sort -V | tail -1`
 ./autogen.sh
 ./configure
 make -j$(nproc)
 echo "Build complete!"
-make check
 
+# Perform tests
+make check
 if [ $? != 0 ]; then
   echo "Tests Failed! Please seek support!"
   exit
@@ -55,7 +76,7 @@ else
   make install
 fi
 
-chown -R $(logname): ../HTMLCOIN
+chown -R $USER:$USER ../HTMLCOIN
 
 # Download icon and make desktop file for quick launching
 mkdir -p /usr/share/htmlcoin/pixmaps
