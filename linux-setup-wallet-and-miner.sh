@@ -57,6 +57,15 @@ apt-get -qq install \
   libprotobuf-dev \
   protobuf-compiler
 
+# Install boost dependencies
+apt-get -qq install \
+  libboost-system-dev \
+  libboost-filesystem-dev \
+  libboost-chrono-dev \
+  libboost-program-options-dev \
+  libboost-test-dev \
+  libboost-thread-dev
+
 # Clone the HTMLCOIN Core repository, swtich to latest release and compile
 git clone --recursive https://github.com/HTMLCOIN/HTMLCOIN
 cd HTMLCOIN
@@ -92,7 +101,7 @@ Exec=htmlcoin-qt %F
 Terminal=false
 Icon=/usr/share/htmlcoin/pixmaps/htmlcoin.png
 Type=Application
-Categories=Application;Cryptocurrency;HTMLCoin;
+Categories=Application;Crypto Wallets;HTMLCoin Wallet;
 Comment=HTMLCoin Wallet
 EOT
 

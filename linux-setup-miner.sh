@@ -41,6 +41,15 @@ apt-get -qq install \
 apt-get -qq install \
   libdb4.8-dev libdb4.8++-dev
 
+# Install boost dependencies
+apt-get -qq install \
+  libboost-system-dev \
+  libboost-filesystem-dev \
+  libboost-chrono-dev \
+  libboost-program-options-dev \
+  libboost-test-dev \
+  libboost-thread-dev
+
 # Clone the HTMLCOIN Core repository, swtich to latest release and compile
 git clone --recursive https://github.com/HTMLCOIN/HTMLCOIN
 cd HTMLCOIN
